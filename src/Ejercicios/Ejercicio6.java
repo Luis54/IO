@@ -24,13 +24,15 @@ public class Ejercicio6 {
 		char[] array2 = new char[(int) (inFile.length()-array1.length)];
 		//stream de lectura
 		try (BufferedReader in = new BufferedReader(new FileReader(inFile));
-				BufferedWriter out1 = new BufferedWriter(new FileWriter(outFile1))
-				){
+				BufferedWriter out1 = new BufferedWriter(new FileWriter(outFile1)); 
+				BufferedWriter out2 = new BufferedWriter(new FileWriter(outFile2))){
 			//añadir los 1024 byte al array
 			in.read(array1); out1.flush();
 			out1.write(array1);
 			//el resto lo añadimos al segundo array
-			//in.read(array2, array1.length, array2.length);
+			in.read(array2);
+			out2.write(array2); out2.flush(); //forzamos el volcado del flujo
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
